@@ -16,22 +16,9 @@ const images = [
   },
 ];
 
-let gallery = document.getElementById('gallery');
+const gallery = document.querySelector('#gallery');
 
-let createGallery = function (arr, id) {
-  for (let i = 0; i < arr.length; i += 1) {
-    let str = '<li><img src=""></li>';
-    id.insertAdjacentHTML('afterbegin', str);
+const createGallery = ({ url, alt }) => `<li><img src = ${url} alt = ${alt} width 320 height = 200></li>`;
+const galleryList = images.map(createGallery).join('');
+gallery.insertAdjacentHTML('afterbegin', galleryList); 
 
-    let li = id.querySelector('li');
-    let img = id.querySelector('img');
-
-    li.classList.add('lili');
-    img.classList.add('fff');
-
-    img.setAttribute('src', arr[i].url);
-    img.setAttribute('alt', arr[i].alt);
-  }
-}
-
-createGallery(images, gallery);
